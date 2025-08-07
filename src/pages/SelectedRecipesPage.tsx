@@ -6,7 +6,6 @@ import { mealToRecipe, mealToRecipeCard, combineIngredients } from '../utils/rec
 import { useSelectedRecipes } from '../hooks/useSelectedRecipes'
 import RecipeCard from '../components/RecipeCard'
 import LoadingSpinner from '../components/LoadingSpinner'
-import ErrorMessage from '../components/ErrorMessage'
 
 export default function SelectedRecipesPage() {
   const { selectedRecipeIds, removeRecipe } = useSelectedRecipes()
@@ -25,7 +24,6 @@ export default function SelectedRecipesPage() {
 
   const isLoading = recipeQueries.some(query => query.isLoading)
   const hasErrors = recipeQueries.some(query => query.error)
-  const allLoaded = recipeQueries.every(query => query.data)
 
   const loadedRecipes = useMemo(() => {
     return recipeQueries

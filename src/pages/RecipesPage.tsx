@@ -31,12 +31,6 @@ export default function RecipesPage() {
     staleTime: 5 * 60 * 1000,
   })
 
-  const { data: categoriesData } = useQuery({
-    queryKey: ['categories'],
-    queryFn: () => apiService.getCategories(),
-    staleTime: 30 * 60 * 1000,
-  })
-
   const allRecipes = useMemo(() => {
     if (!searchData?.meals) return []
     return searchData.meals.map(mealToRecipeCard)
